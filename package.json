@@ -1,0 +1,40 @@
+{
+  "name": "games-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "development": "nodemon",
+    "build": "webpack --mode==development --config webpack.config.server.js",
+    "start": "NODE_ENV=production node ./dist/server.generated.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "NJT",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.12.1",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.18.2",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "fs": "0.0.1-security",
+    "fs-extra": "^9.0.1",
+    "graphql": "^15.3.0",
+    "graphql-compose": "^7.22.1",
+    "graphql-compose-connection": "^8.0.1",
+    "graphql-compose-mongoose": "^9.0.0",
+    "helmet": "^4.1.1",
+    "lodash": "^4.17.20",
+    "mongoose": "^5.10.8",
+    "path": "^0.12.7"
+  }
+}
