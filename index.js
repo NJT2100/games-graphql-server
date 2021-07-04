@@ -1,5 +1,4 @@
 import app from './express'
-import db from './models/db'
 import config from './config/config'
 
 app.listen(config.port, (err) => {
