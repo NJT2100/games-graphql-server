@@ -10,6 +10,7 @@ import mongoose from 'mongoose'
 import { ApolloServer } from 'apollo-server-express'
 import config from './config/config'
 import schema from './schema'
+import { Console } from 'console'
 
 const app = express()
 
@@ -60,10 +61,23 @@ server.applyMiddleware({
 })
 
 // Connect to MongoDB
-mongoose.connect(config.mongoUri, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
+const {
+    MONGO_HOSTNAME,
+    MONGO_PORT,
+    MONGO_DB
+} = process.env
 
-mongoose.connection.on('connected', () => {
-    console.log(`Mongoose connected to ${config.mongoUri}`)
+const options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+}
+
+const url = `mongodb://${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}`
+mongoose.connect(url, options).then(() => {
+    console.log(`Mongoose connected to ${url}`)
+}).catch((err) => {
+    console.error(err);
 })
 
 mongoose.connection.on('disconnected', () => {
